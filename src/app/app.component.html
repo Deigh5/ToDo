@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <img width="100" src="assets/img/todo.png">
+  <h1>
+    {{ title }}
+  </h1>
+</div>
+<mat-card>
+  <h2>Add Task:</h2>
+
+  <mat-form-field>
+    <input matInput placeholder="Task Description" [(ngModel)] = "newDesc"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Task Priority" [(ngModel)] = "newPrior"/>
+  </mat-form-field>
+    
+    <button mat-fab color= "primary" (click) = "addTask()"><mat-icon>add</mat-icon></button>
+
+  <p *ngFor="let task of tasks" class="btn"> 
+      
+      {{task.taskDesc}}
+      {{task.taskPrior}}
+
+    
+        <button mat-flat-button color="accent" (click)="deleteTask(task)"><mat-icon>delete</mat-icon></button>
+        <button mat-flat-button color="accent" (click)="editTask(task)"><mat-icon>edit</mat-icon></button>
+
+  </p>
+
+  <div *ngIf="blank">
+    <h3>To Do List is Empty</h3>
+  </div>
+</mat-card>
+
+<router-outlet></router-outlet>
+  
